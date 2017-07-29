@@ -1,7 +1,7 @@
 .main {
   .main-menu{
     float: left;
-    background: rgb(43, 47, 62);
+    background: #2b2f3e;
     height:100vh;
 
     h1 {
@@ -48,10 +48,6 @@
   }
 }
 
-.comments-items {
-  border: 1px solid grey;
-}
-
 .wrapper {
   .print-items {
     li {
@@ -62,15 +58,11 @@
       margin-top: 0;
       outline: none;
 
-      // &:hover {
-      //   cursor: pointer;
-      // }
-
       button {
         background: white;
         border: 2px solid #ff98ac;
         border-radius: 5px;
-        color: #ff98ac;
+        color: #ff305a;
         font-size: 16pt;
         width: 28%;
       }
@@ -92,6 +84,69 @@
           position:absolute;
           margin-left: -40px;
           // top: -5px;
+        }
+      }
+    }
+  }
+}
+
+
+// Comments
+
+.comments {
+  .comments-box {
+    border: 1px solid #dedede;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin: 15px;
+    min-height: 80vh;
+  }
+
+  .comments-items {
+    margin: 20px;
+    padding: 20px 0;
+  }
+
+  .comments-list {
+    ul {
+      padding-left: 0;
+      li {
+        list-style-type: none;
+
+        div {
+          display: inline-block;
+
+          .color-square {
+            background: red;
+            height: 80px;
+            width: 80px;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .add-comment {
+    .pure-form {
+      fieldset {
+        padding-left: 10px;
+        input {
+          background: white;
+          border: none;
+          display: inline-block;
+          position: relative;
+          top: -15px;
+          height: 80px;
+          width: 80px;
+          box-shadow: none;
+          padding: 0;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        textarea {
+           resize: none;
         }
       }
     }

@@ -6,14 +6,22 @@ module.exports = angular
     controller: ArticlesController
   });
 
+ArticlesController.$inject = [
+
+];
+
 
 function ArticlesController() {
   var ctrl = this;
   ctrl.items = JSON.parse(localStorage.getItem("items")) || [];
+  ctrl.index = undefined;
+  ctrl.comments = [];
+  ctrl.commentField = document.querySelector("#commentField");
+  ctrl.color = document.querySelector("#colorPiker");
 
   ctrl.createItem = function(value) {
     if(value.item != "" && value.item != undefined) {
-      ctrl.item = {name: value.item, comments: {}};
+      ctrl.item = {name: value.item, comments: []};
       ctrl.items.push(ctrl.item);
       localStorage.setItem("items", angular.toJson(ctrl.items));
       value.item = "";
@@ -27,15 +35,27 @@ function ArticlesController() {
     localStorage.setItem("items", angular.toJson(ctrl.items));
   }
 
-  ctrl.selectItem = function(index, event, current) {
-    console.log(index)
-    console.log(event)
-    console.log(current)
-
+  ctrl.selectItem = function(index, event) {
+    ctrl.index = index;
+    ctrl.comments = ctrl.items[index].comments;
     var elems = document.querySelector(".active");
-    if(elems !==null){
+    if(elems !== null){
      elems.classList.remove("active");
     }
    event.target.className = "active";
   }
+
+  ctrl.commentField.addEventListener("keyup", function(event) {
+    if(event.key == 'Enter') {
+      ctrl.colorPiker = document.querySelector('#colorPiker');
+      event.target.value = event.target.value.trim();
+
+      if(event.target.value.length > 0) {
+        ctrl.comment = {color: ctrl.color.value, coment: event.target.value}
+        ctrl.items[ctrl.index].comments.push(ctrl.comment);
+      }
+      localStorage.setItem("items", angular.toJson(ctrl.items));
+      event.target.value = "";
+    }
+  });
 };

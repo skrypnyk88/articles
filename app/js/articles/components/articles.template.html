@@ -13,9 +13,10 @@
         </form>
       </div>
       <div class="wrapper">
-        <ul class="print-items "
-            ng-click="$ctrl.selectItem($index, $event, this)">
+        <ul class="print-items"
+            >
           <li ng-repeat="item in $ctrl.items"
+          ng-click="$ctrl.selectItem($index, $event)"
               >
             <a href="#" >
               {{item.name}} <span>{{ctrl.quantityOfArticles}}</span>
@@ -31,8 +32,35 @@
   </div>
 
   <div class="comments pure-u-1-2">
-    <div class="article-items">
-      <h1>Comments</h1>
+    <div class="comments-box">
+      <div class="comments-items">
+        <h1>Comments #{{$ctrl.index + 1}}</h1>
+      </div>
+      <div class="comments-list">
+        <ul>
+          <li ng-repeat="comment in $ctrl.comments">
+            <div>
+              <div class="color-square" style="background: {{comment.color}}">
+              </div>
+              <div >
+                <p>{{comment.coment}}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="add-comment">
+        <form class="pure-form" name="addIComment">
+          <fieldset>
+            <input id="colorPiker" type="color" name="color" ng-model="color">
+            <textarea name="comment" id="commentField" ng-model="comment" rows="5"
+            placeholder="Type comment here..."
+            class="pure-u-4-5"
+            ></textarea
+            >
+          </fieldset>
+        </form>
+      </div>
     </div>
   </div>
 </div>
