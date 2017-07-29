@@ -6,18 +6,19 @@ module.exports = angular
     controller: ArticlesController
   });
 
-ArticlesController.$inject = [
+ArticlesController.$inject = [ "$scope"
 
 ];
 
 
-function ArticlesController() {
+function ArticlesController($scope) {
   var ctrl = this;
   ctrl.items = JSON.parse(localStorage.getItem("items")) || [];
   ctrl.index = undefined;
   ctrl.comments = [];
   ctrl.commentField = document.querySelector("#commentField");
   ctrl.color = document.querySelector("#colorPiker");
+  ctrl.hide = true;
 
   ctrl.createItem = function(value) {
     if(value.item != "" && value.item != undefined) {
@@ -28,14 +29,14 @@ function ArticlesController() {
     }
   }
 
-  ctrl.quantityOfArticles = 0;
-
   ctrl.deleteItem = function(index) {
+    ctrl.hide = true;
     ctrl.items.splice(index, 1)
     localStorage.setItem("items", angular.toJson(ctrl.items));
   }
 
   ctrl.selectItem = function(index, event) {
+    ctrl.hide = false;
     ctrl.index = index;
     ctrl.comments = ctrl.items[index].comments;
     var elems = document.querySelector(".active");
@@ -56,6 +57,7 @@ function ArticlesController() {
       }
       localStorage.setItem("items", angular.toJson(ctrl.items));
       event.target.value = "";
+
     }
   });
 };

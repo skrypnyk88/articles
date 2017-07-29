@@ -1,8 +1,9 @@
 .main {
+  background: #2b2f3e;
+  min-height: 100vh;
   .main-menu{
     float: left;
-    background: #2b2f3e;
-    height:100vh;
+    min-height: 100vh;
 
     h1 {
       color: #565A69;
@@ -20,6 +21,12 @@
       flex: 18pt;
     }
   }
+}
+
+.articles-component {
+  background: white;
+  display: inline-block;
+  min-height: 100vh;
 }
 
 .article {
@@ -57,6 +64,7 @@
       padding-left: 0;
       margin-top: 0;
       outline: none;
+      position: relative;
 
       button {
         background: white;
@@ -75,15 +83,23 @@
         outline: none;
         font-size: 16pt;
         width: 70%;
-        // position: relative;
-        // top: 10px;
+        overflow:hidden;
+        vertical-align: bottom;
+
+        span {
+          margin-left: 10px;
+          background: #27ccc0;
+          display: inline-block;
+          padding: 5px 15px;
+          border-radius: 35%;
+        }
       }
       a.active {
         &:before {
           content:url('../img/line.png');
           position:absolute;
           margin-left: -40px;
-          // top: -5px;
+          top: 15px;
         }
       }
     }
@@ -106,20 +122,39 @@
     padding: 20px 0;
   }
 
+  .hidden-text {
+    h1 {
+      margin-left: 15px;
+    }
+  }
+
   .comments-list {
     ul {
       padding-left: 0;
       li {
         list-style-type: none;
 
-        div {
-          display: inline-block;
+        .repeat-box {
+          border-bottom: 1px solid #dedede;
+          padding-top: 5px;
+          padding-bottom: 10px;
+          margin: 10px;
 
           .color-square {
+            display: inline-block;
             background: red;
             height: 80px;
             width: 80px;
-            margin-left: 10px;
+          }
+
+          .comment-div{
+            display: inline-block;
+            overflow:hidden;
+
+            span {
+              background: #fcc3c8;
+              margin: 0;
+            }
           }
         }
       }

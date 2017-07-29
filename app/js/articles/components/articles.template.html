@@ -19,7 +19,7 @@
           ng-click="$ctrl.selectItem($index, $event)"
               >
             <a href="#" >
-              {{item.name}} <span>{{ctrl.quantityOfArticles}}</span>
+              {{item.name}} <span>{{item.comments.length}}</span>
             </a>
             <button ng-click="$ctrl.deleteItem($index)"
                     class="pure-button pure-button-primary">
@@ -36,28 +36,31 @@
       <div class="comments-items">
         <h1>Comments #{{$ctrl.index + 1}}</h1>
       </div>
-      <div class="comments-list">
+      <div ng-if="$ctrl.hide" class="hidden-text">
+        <h1>Select an article, to view a comments.</h1>
+      </div>
+      <div class="comments-list" ng-if="!$ctrl.hide">
         <ul>
           <li ng-repeat="comment in $ctrl.comments">
-            <div>
+            <div class="repeat-box">
               <div class="color-square" style="background: {{comment.color}}">
               </div>
-              <div >
-                <p>{{comment.coment}}</p>
+              <div class="comment-div pure-u-3-4">
+                <span>{{comment.coment}}</span>
               </div>
             </div>
           </li>
         </ul>
       </div>
       <div class="add-comment">
-        <form class="pure-form" name="addIComment">
+        <form id="form" class="pure-form" name="addIComment">
           <fieldset>
             <input id="colorPiker" type="color" name="color" ng-model="color">
             <textarea name="comment" id="commentField" ng-model="comment" rows="5"
             placeholder="Type comment here..."
             class="pure-u-4-5"
-            ></textarea
-            >
+            ng-disabled="$ctrl.index == undefined">
+            </textarea>
           </fieldset>
         </form>
       </div>
