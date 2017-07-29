@@ -1,0 +1,38 @@
+<div layout="row" class="pure-g">
+  <div class="article pure-u-1-2">
+    <div class="article-box">
+      <div class="article-items">
+        <h1>Items</h1>
+        <form class="pure-form" name="addItem" ng-submit="$ctrl.createItem(this)">
+          <fieldset>
+            <input type="text" name="item" placeholder="Type name here..." ng-model="item">
+            <button type="submit"
+                    class="pure-button pure-button-primary"
+                    >Add new</button>
+          </fieldset>
+        </form>
+      </div>
+      <div class="wrapper">
+        <ul class="print-items "
+            ng-click="$ctrl.selectItem($index, $event, this)">
+          <li ng-repeat="item in $ctrl.items"
+              >
+            <a href="#" >
+              {{item.name}} <span>{{ctrl.quantityOfArticles}}</span>
+            </a>
+            <button ng-click="$ctrl.deleteItem($index)"
+                    class="pure-button pure-button-primary">
+                    Delete
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="comments pure-u-1-2">
+    <div class="article-items">
+      <h1>Comments</h1>
+    </div>
+  </div>
+</div>
