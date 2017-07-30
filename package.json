@@ -6,7 +6,7 @@
   "scripts": {
     "server": "webpack-dev-server --history-api-fallback --watch-content-base --hot --progress --port 1111",
     "start": "npm run server",
-    "run": "webpack -p"
+    "deploy": "NODE_ENV=production webpack -p && NODE_ENV=production node server",
   },
   "devDependencies": {
     "css-loader": "^0.27.3",
@@ -19,7 +19,7 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2"
   },
-  "author": "LV-227",
+  "author": "Dmytro",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.0",

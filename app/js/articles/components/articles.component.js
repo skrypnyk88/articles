@@ -6,12 +6,10 @@ module.exports = angular
     controller: ArticlesController
   });
 
-ArticlesController.$inject = [ "$scope"
-
-];
+ArticlesController.$inject = [];
 
 
-function ArticlesController($scope) {
+function ArticlesController() {
   var ctrl = this;
   ctrl.items = JSON.parse(localStorage.getItem("items")) || [];
   ctrl.index = undefined;

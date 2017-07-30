@@ -1,7 +1,10 @@
 {
+    "excludeFiles": [
+       "app/js/coverage/**",
+       "node_modules/**"
+    ],
     "preset": "google",
     "fileExtensions": [".js", "jscs"],
-
     "requireCurlyBraces": [
         "if",
         "else",
@@ -13,8 +16,7 @@
     ],
     "requireOperatorBeforeLineBreak": true,
     "requireCamelCaseOrUpperCaseIdentifiers": {
-        "allowedPrefixes": ["opt_"],
-        "allExcept": ["var_args"]
+       "allExcept": ["var_args", {regex:{pattern:"^ignore",flags:"i"}}]
     },
     "maximumLineLength": {
       "value": 100,
@@ -94,4 +96,5 @@
         "checkRedundantAccess": true,
         "requireNewlineAfterDescription": true
     }
+
 }

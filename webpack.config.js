@@ -1,12 +1,12 @@
+var path = require('path');
 module.exports = {
   entry: './app/js/app.js',
   output: {
-    path: __dirname,
+    path: path.join(__dirname, 'dist'),
+    publicPath: 'dist/',
     filename: 'bundle.js'
   },
-
   module: {
-
     loaders: [{
       test: /\.scss$/,
       loader: 'style-loader!css-loader!sass-loader?resolve url'
@@ -17,6 +17,5 @@ module.exports = {
       test: /\.css$/,
       loader: 'style-loader!css-loader'
     }]
-
   },
 };
